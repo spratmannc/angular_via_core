@@ -10,7 +10,10 @@ My requirements were:
 * BrowserLink Support
 * Hiding JS + Map files just like I can do easily in VS Code
 * Easy F5 debugging
+* Routing (_pending - have to confirm index.html default behavior_)
 
 ## Special Features
-The only tricky part was surfacing the `node_modules` and `src` folders _without_ putting them in `wwwroot`.  That is purely aesthetic, as I wanted to separate _source code_ from _static files_ in my mind. Plus I didn't want a gulp or npm script to copy those files on build (because I don't want to build - I just want to save and let BrowserLink resync).
+The first tricky part was surfacing the `node_modules` and `src` folders _without_ putting them in `wwwroot`.  That is purely aesthetic, as I wanted to separate _source code_ from _static files_ in my mind. Plus I didn't want a gulp or npm script to copy those files on build (because I don't want to build - I just want to save and let BrowserLink resync).
+
+The second tricky part was to make sure the contents of those files were __not__ cached.  Otherwise the browser link refresh would appear to not work.
 

@@ -16,6 +16,6 @@ export class ToolbarComponent {
         setInterval(() => {
             this.count++;
             this.someText = `The count is now ${this.count}`;
-        }, 1000);)
+        }, 1000);
     }
 }
