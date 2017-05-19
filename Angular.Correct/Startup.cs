@@ -28,20 +28,34 @@ namespace Angular.Correct
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
 
             // serve up wwwroot
             app.UseFileServer();
+            app.UseFileServer(AddSourceFolder(env, "node_modules"));
+            app.UseFileServer(AddSourceFolder(env, "src"));
+        }
 
+        private FileServerOptions AddSourceFolder(IHostingEnvironment env, string folderName)
+        {
             // this will serve up node_modules
             var provider = new PhysicalFileProvider(
-                Path.Combine(env.ContentRootPath, "node_modules")
+                Path.Combine(env.ContentRootPath, folderName)
             );
+
             var options = new FileServerOptions();
-            options.RequestPath = "/node_modules";
+            options.RequestPath = $"/{folderName}";
             options.StaticFileOptions.FileProvider = provider;
             options.EnableDirectoryBrowsing = true;
-            app.UseFileServer(options);
+
+
+            options.StaticFileOptions.OnPrepareResponse = (context) =>
+            {
+                context.Context.Response.Headers.Add("Cache-Control", "no-cache, no-store");
+                context.Context.Response.Headers.Add("Expires", "-1");
+            };
+            return options;
         }
     }
 }
