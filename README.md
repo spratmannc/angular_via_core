@@ -3,7 +3,7 @@
 This project demonstrates the simplest (?) configuration for an ASP.NET Core hosting of an Angular app.  I needed something that could take advantage of the excellent development qualities of Visual Studio (not to downplay Code, which I also love).
 
 My requirements were:
-* Simplicity of configuration
+* Simplicity of configuration - separating intracacies of SystemJS from the simplicity of Angular
 * Remaining true to the _Angular Quickstart_
 * Visual Studio development flow
 * Refresh-on-save of both TypeScript and HTML template files
