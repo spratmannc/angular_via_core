@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
     <toolbar></toolbar>
   `,
 })
-export class AppComponent  { name = 'Tonya and Alaina and Roger'; }
+export class AppComponent  { name = '[Type Names Here]'; }
